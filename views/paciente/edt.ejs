@@ -1,0 +1,72 @@
+<%- include("../partials/cabecalho.ejs") %>
+
+<h1 class="h3 mb-3">Editar Paciente</h1>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <form method="post" action="/paciente/edt/<%= paciente._id %>">
+      <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input
+          type="text"
+          name="nome"
+          class="form-control"
+          value="<%= paciente.nome %>"
+          required
+        />
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">CPF</label>
+          <input
+            type="text"
+            name="cpf"
+            class="form-control"
+            value="<%= paciente.cpf %>"
+            required
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Telefone</label>
+          <input
+            type="text"
+            name="telefone"
+            class="form-control"
+            value="<%= paciente.telefone %>"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Data de Nascimento (opcional)</label>
+          <input
+            type="date"
+            name="dataNascimento"
+            class="form-control"
+            value="<%= paciente.dataNascimento ? paciente.dataNascimento.toISOString().split('T')[0] : '' %>"
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Convênio</label>
+          <input
+            type="text"
+            name="convenio"
+            class="form-control"
+            value="<%= paciente.convenio %>"
+            required
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+      <a href="/paciente/lst" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+
+<%- include("../partials/rodape.ejs") %>

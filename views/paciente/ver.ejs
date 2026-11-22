@@ -1,0 +1,24 @@
+<%- include("../partials/cabecalho.ejs") %>
+
+<h1 class="h3 mb-3">Detalhes da Paciente</h1>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <p><strong>Nome:</strong> <%= paciente.nome %></p>
+    <p><strong>CPF:</strong> <%= paciente.cpf %></p>
+    <p><strong>Telefone:</strong> <%= paciente.telefone %></p>
+    <p>
+      <strong>Data de Nascimento:</strong> <%= paciente.dataNascimento ?
+      paciente.dataNascimento.toISOString().split("T")[0].split("-").reverse().join("/")
+      : "Não informada" %>
+    </p>
+    <p class="mb-4"><strong>Convênio:</strong> <%= paciente.convenio %></p>
+
+    <a href="/paciente/edt/<%= paciente._id %>" class="btn btn-warning btn-sm"
+      >Editar</a
+    >
+    <a href="/paciente/lst" class="btn btn-secondary btn-sm">Voltar</a>
+  </div>
+</div>
+
+<%- include("../partials/rodape.ejs") %>

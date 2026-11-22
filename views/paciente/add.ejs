@@ -1,0 +1,67 @@
+<%- include("../partials/cabecalho.ejs") %>
+
+<h1 class="h3 mb-3">Nova Paciente</h1>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <form method="post" action="/paciente/add">
+      <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input
+          type="text"
+          name="nome"
+          class="form-control"
+          placeholder="Ex: Ana Paula Ferreira"
+          required
+        />
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">CPF</label>
+          <input
+            type="text"
+            name="cpf"
+            class="form-control"
+            placeholder="000.000.000-00"
+            required
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Telefone</label>
+          <input
+            type="text"
+            name="telefone"
+            class="form-control"
+            placeholder="(51) 99999-9999"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Data de Nascimento (opcional)</label>
+          <input type="date" name="dataNascimento" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Convênio</label>
+          <input
+            type="text"
+            name="convenio"
+            class="form-control"
+            placeholder="Ex: FB-Saúde, Lemed, Particular"
+            required
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <a href="/paciente/lst" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+
+<%- include("../partials/rodape.ejs") %>
