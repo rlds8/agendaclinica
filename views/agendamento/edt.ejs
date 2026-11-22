@@ -1,0 +1,48 @@
+<%- include("../partials/cabecalho.ejs") %>
+
+<h1 class="h3 mb-3">Editar Agendamento</h1>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <form method="post" action="/agendamento/edt/<%= agendamento._id %>">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Nome da Paciente</label>
+          <input type="text" name="nomePaciente" class="form-control" value="<%= agendamento.nomePaciente %>" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Nome do Médico</label>
+          <input type="text" name="nomeMedico" class="form-control" value="<%= agendamento.nomeMedico %>" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Tipo de Procedimento</label>
+        <input type="text" name="tipoProcedimento" class="form-control" value="<%= agendamento.tipoProcedimento %>" required>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Data e Hora</label>
+          <input type="datetime-local" name="dataHora" class="form-control" value="<%= dataHoraInput %>" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Status</label>
+          <select name="status" class="form-select" required>
+            <option value="Agendado" <%= agendamento.status === "Agendado" ? "selected" : "" %>>Agendado</option>
+            <option value="Confirmado" <%= agendamento.status === "Confirmado" ? "selected" : "" %>>Confirmado</option>
+            <option value="Realizado" <%= agendamento.status === "Realizado" ? "selected" : "" %>>Realizado</option>
+            <option value="Cancelado" <%= agendamento.status === "Cancelado" ? "selected" : "" %>>Cancelado</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+      <a href="/agendamento/lst" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+
+<%- include("../partials/rodape.ejs") %>

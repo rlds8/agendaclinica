@@ -1,0 +1,21 @@
+<%- include("../partials/cabecalho.ejs") %>
+
+<h1 class="h3 mb-3">Detalhes do Agendamento</h1>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <p><strong>Paciente:</strong> <%= agendamento.nomePaciente %></p>
+    <p><strong>Médico:</strong> <%= agendamento.nomeMedico %></p>
+    <p><strong>Procedimento:</strong> <%= agendamento.tipoProcedimento %></p>
+    <p>
+      <strong>Data e Hora:</strong>
+      <%= agendamento.dataHora ? agendamento.dataHora.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo", dateStyle: "short", timeStyle: "short" }) : "" %>
+    </p>
+    <p class="mb-4"><strong>Status:</strong> <%= agendamento.status %></p>
+
+    <a href="/agendamento/edt/<%= agendamento._id %>" class="btn btn-warning btn-sm">Editar</a>
+    <a href="/agendamento/lst" class="btn btn-secondary btn-sm">Voltar</a>
+  </div>
+</div>
+
+<%- include("../partials/rodape.ejs") %>

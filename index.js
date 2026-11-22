@@ -138,6 +138,76 @@ app.post("/medico/del/:id", async (req, res) => {
   res.redirect("/medico/lst");
 });
 
+// ===== ROTAS DE AGENDAMENTO =====
+app.get("/agendamento/lst", async (req, res) => {
+  const pesquisa = req.query.pesquisa || "";
+  const status = req.query.status || "";
+  let filtro = {};
+
+  if (pesquisa) {
+    filtro.$or = [
+      { nomePaciente: { $regex: pesquisa, $options: "i" } },
+      { nomeMedico: { $regex: pesquisa, $options: "i" } },
+    ];
+  }
+
+  if (status) {
+    filtro.status = status;
+  }
+
+  const agendamentos = await Agendamento.find(filtro).sort({ dataHora: 1 });
+  res.render("agendamento/lst", { agendamentos, pesquisa, status });
+});
+
+app.get("/agendamento/add", (req, res) => {
+  res.render("agendamento/add");
+});
+
+app.post("/agendamento/add", async (req, res) => {
+  const { nomePaciente, nomeMedico, tipoProcedimento, dataHora, status } =
+    req.body;
+  await Agendamento.create({
+    nomePaciente,
+    nomeMedico,
+    tipoProcedimento,
+    dataHora: new Date(dataHora + "-03:00"),
+    status,
+  });
+  res.redirect("/agendamento/lst");
+});
+
+app.get("/agendamento/ver/:id", async (req, res) => {
+  const agendamento = await Agendamento.findById(req.params.id);
+  res.render("agendamento/ver", { agendamento });
+});
+
+app.get("/agendamento/edt/:id", async (req, res) => {
+  const agendamento = await Agendamento.findById(req.params.id);
+  const dataLocal = new Date(
+    agendamento.dataHora.getTime() - 3 * 60 * 60 * 1000,
+  );
+  const dataHoraInput = dataLocal.toISOString().slice(0, 16);
+  res.render("agendamento/edt", { agendamento, dataHoraInput });
+});
+
+app.post("/agendamento/edt/:id", async (req, res) => {
+  const { nomePaciente, nomeMedico, tipoProcedimento, dataHora, status } =
+    req.body;
+  await Agendamento.findByIdAndUpdate(req.params.id, {
+    nomePaciente,
+    nomeMedico,
+    tipoProcedimento,
+    dataHora: new Date(dataHora + "-03:00"),
+    status,
+  });
+  res.redirect("/agendamento/lst");
+});
+
+app.post("/agendamento/del/:id", async (req, res) => {
+  await Agendamento.findByIdAndDelete(req.params.id);
+  res.redirect("/agendamento/lst");
+});
+
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
