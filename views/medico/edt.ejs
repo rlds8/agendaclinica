@@ -1,0 +1,46 @@
+<%- include("../partials/cabecalho.ejs") %>
+
+<h1 class="h3 mb-3">Editar Médico</h1>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <form method="post" action="/medico/edt/<%= medico._id %>">
+      <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" name="nome" class="form-control" value="<%= medico.nome %>" required>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">CRM</label>
+          <input type="text" name="crm" class="form-control" value="<%= medico.crm %>" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Especialidade</label>
+          <input type="text" name="especialidade" class="form-control" value="<%= medico.especialidade %>" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Clínica Parceira</label>
+          <input type="text" name="clinicaParceira" class="form-control" value="<%= medico.clinicaParceira %>" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Situação</label>
+          <select name="ativo" class="form-select" required>
+            <option value="true" <%= medico.ativo ? "selected" : "" %>>Ativo</option>
+            <option value="false" <%= !medico.ativo ? "selected" : "" %>>Inativo</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+      <a href="/medico/lst" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+
+<%- include("../partials/rodape.ejs") %>

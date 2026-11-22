@@ -1,0 +1,64 @@
+<%- include("../partials/cabecalho.ejs") %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h3 mb-0">Médicos</h1>
+  <a href="/medico/add" class="btn btn-primary">+ Novo Médico</a>
+</div>
+
+<form method="get" action="/medico/lst" class="row g-2 mb-3">
+  <div class="col-md-6">
+    <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisar por nome ou clínica parceira..." value="<%= pesquisa %>">
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+    <% if (pesquisa) { %>
+      <a href="/medico/lst" class="btn btn-outline-secondary">Limpar</a>
+    <% } %>
+  </div>
+</form>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover bg-white shadow-sm align-middle">
+    <thead class="table-primary">
+      <tr>
+        <th>Nome</th>
+        <th>CRM</th>
+        <th>Especialidade</th>
+        <th>Clínica Parceira</th>
+        <th>Situação</th>
+        <th class="text-end">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (medicos.length === 0) { %>
+        <tr>
+          <td colspan="6" class="text-center text-muted py-3">Nenhum médico encontrado.</td>
+        </tr>
+      <% } %>
+      <% medicos.forEach(medico => { %>
+        <tr>
+          <td><%= medico.nome %></td>
+          <td><%= medico.crm %></td>
+          <td><%= medico.especialidade %></td>
+          <td><%= medico.clinicaParceira %></td>
+          <td>
+            <% if (medico.ativo) { %>
+              <span class="badge bg-success">Ativo</span>
+            <% } else { %>
+              <span class="badge bg-secondary">Inativo</span>
+            <% } %>
+          </td>
+          <td class="text-end">
+            <a href="/medico/ver/<%= medico._id %>" class="btn btn-info btn-sm text-white">Visualizar</a>
+            <a href="/medico/edt/<%= medico._id %>" class="btn btn-warning btn-sm">Editar</a>
+            <form method="post" action="/medico/del/<%= medico._id %>" class="d-inline" onsubmit="return confirm('Deseja realmente excluir este médico?')">
+              <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("../partials/rodape.ejs") %>

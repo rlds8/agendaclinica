@@ -1,0 +1,25 @@
+<%- include("../partials/cabecalho.ejs") %>
+
+<h1 class="h3 mb-3">Detalhes do Médico</h1>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <p><strong>Nome:</strong> <%= medico.nome %></p>
+    <p><strong>CRM:</strong> <%= medico.crm %></p>
+    <p><strong>Especialidade:</strong> <%= medico.especialidade %></p>
+    <p><strong>Clínica Parceira:</strong> <%= medico.clinicaParceira %></p>
+    <p class="mb-4">
+      <strong>Situação:</strong>
+      <% if (medico.ativo) { %>
+        <span class="badge bg-success">Ativo</span>
+      <% } else { %>
+        <span class="badge bg-secondary">Inativo</span>
+      <% } %>
+    </p>
+
+    <a href="/medico/edt/<%= medico._id %>" class="btn btn-warning btn-sm">Editar</a>
+    <a href="/medico/lst" class="btn btn-secondary btn-sm">Voltar</a>
+  </div>
+</div>
+
+<%- include("../partials/rodape.ejs") %>

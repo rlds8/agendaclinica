@@ -1,0 +1,70 @@
+<%- include("../partials/cabecalho.ejs") %>
+
+<h1 class="h3 mb-3">Novo Médico</h1>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <form method="post" action="/medico/add">
+      <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input
+          type="text"
+          name="nome"
+          class="form-control"
+          placeholder="Ex: Dra. Camila Rodrigues"
+          required
+        />
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">CRM</label>
+          <input
+            type="text"
+            name="crm"
+            class="form-control"
+            placeholder="Ex: 34521-RS"
+            required
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Especialidade</label>
+          <input
+            type="text"
+            name="especialidade"
+            class="form-control"
+            placeholder="Ex: Ginecologia e Obstetrícia"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Clínica Parceira</label>
+          <input
+            type="text"
+            name="clinicaParceira"
+            class="form-control"
+            placeholder="Ex: Lemed ou FB-Saúde"
+            required
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Situação</label>
+          <select name="ativo" class="form-select" required>
+            <option value="true" selected>Ativo</option>
+            <option value="false">Inativo</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <a href="/medico/lst" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+
+<%- include("../partials/rodape.ejs") %>
