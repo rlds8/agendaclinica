@@ -2,49 +2,70 @@
 
 <div class="mb-4">
   <h1 class="h3">Painel Administrativo</h1>
-  <p class="text-muted">
+  <p class="text-muted mb-1">
     Controle de agendamentos de consultas e exames ginecológicos (Lemed e
     FB-Saúde).
   </p>
+  <small class="text-secondary"
+    >Projeto Final | Integrante: Robson Lopes (Polo São Francisco de
+    Paula)</small
+  >
 </div>
 
-<div class="row g-3">
+<div class="row g-3 mb-4">
   <div class="col-md-4">
-    <div class="card shadow-sm h-100">
+    <div class="card shadow-sm h-100 border-primary">
       <div class="card-body">
-        <h5 class="card-title">Pacientes</h5>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="card-title mb-0">Pacientes</h5>
+          <span class="badge bg-primary fs-6"><%= totalPacientes %></span>
+        </div>
         <p class="card-text text-muted">
           Cadastro, pesquisa e atualização das pacientes da clínica.
         </p>
         <a href="/paciente/lst" class="btn btn-primary btn-sm">Gerenciar</a>
-        <a href="/paciente/add" class="btn btn-outline-primary btn-sm">Novo</a>
+        <a href="/paciente/add" class="btn btn-outline-primary btn-sm"
+          >Nova Paciente</a
+        >
       </div>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="card shadow-sm h-100">
+    <div class="card shadow-sm h-100 border-success">
       <div class="card-body">
-        <h5 class="card-title">Médicos</h5>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="card-title mb-0">Médicos</h5>
+          <span class="badge bg-success fs-6"><%= totalMedicos %></span>
+        </div>
         <p class="card-text text-muted">
           Controle dos ginecologistas parceiros e situação de atendimento.
         </p>
-        <a href="/medico/lst" class="btn btn-primary btn-sm">Gerenciar</a>
-        <a href="/medico/add" class="btn btn-outline-primary btn-sm">Novo</a>
+        <a href="/medico/lst" class="btn btn-success btn-sm">Gerenciar</a>
+        <a href="/medico/add" class="btn btn-outline-success btn-sm"
+          >Novo Médico</a
+        >
       </div>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="card shadow-sm h-100">
+    <div class="card shadow-sm h-100 border-info">
       <div class="card-body">
-        <h5 class="card-title">Agendamentos</h5>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="card-title mb-0">Agendamentos</h5>
+          <span class="badge bg-info text-dark fs-6"
+            ><%= totalAgendamentos %></span
+          >
+        </div>
         <p class="card-text text-muted">
           Marcações de consultas, exames preventivos e status.
         </p>
-        <a href="/agendamento/lst" class="btn btn-primary btn-sm">Gerenciar</a>
-        <a href="/agendamento/add" class="btn btn-outline-primary btn-sm"
-          >Novo</a
+        <a href="/agendamento/lst" class="btn btn-info btn-sm text-white"
+          >Gerenciar</a
+        >
+        <a href="/agendamento/add" class="btn btn-outline-info btn-sm"
+          >Novo Agendamento</a
         >
       </div>
     </div>

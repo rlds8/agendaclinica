@@ -12,8 +12,16 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  const totalPacientes = await Paciente.countDocuments();
+  const totalMedicos = await Medico.countDocuments();
+  const totalAgendamentos = await Agendamento.countDocuments();
+
+  res.render("index", {
+    totalPacientes,
+    totalMedicos,
+    totalAgendamentos,
+  });
 });
 
 // ===== ROTAS DE PACIENTE =====
