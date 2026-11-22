@@ -1,0 +1,54 @@
+<%- include("partials/cabecalho.ejs") %>
+
+<div class="mb-4">
+  <h1 class="h3">Painel Administrativo</h1>
+  <p class="text-muted">
+    Controle de agendamentos de consultas e exames ginecológicos (Lemed e
+    FB-Saúde).
+  </p>
+</div>
+
+<div class="row g-3">
+  <div class="col-md-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Pacientes</h5>
+        <p class="card-text text-muted">
+          Cadastro, pesquisa e atualização das pacientes da clínica.
+        </p>
+        <a href="/paciente/lst" class="btn btn-primary btn-sm">Gerenciar</a>
+        <a href="/paciente/add" class="btn btn-outline-primary btn-sm">Novo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Médicos</h5>
+        <p class="card-text text-muted">
+          Controle dos ginecologistas parceiros e situação de atendimento.
+        </p>
+        <a href="/medico/lst" class="btn btn-primary btn-sm">Gerenciar</a>
+        <a href="/medico/add" class="btn btn-outline-primary btn-sm">Novo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Agendamentos</h5>
+        <p class="card-text text-muted">
+          Marcações de consultas, exames preventivos e status.
+        </p>
+        <a href="/agendamento/lst" class="btn btn-primary btn-sm">Gerenciar</a>
+        <a href="/agendamento/add" class="btn btn-outline-primary btn-sm"
+          >Novo</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/rodape.ejs") %>
